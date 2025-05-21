@@ -7,6 +7,7 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
+        "bezhansalleh/filament-google-analytics": "^2.1",
         "filament/filament": "^3.3",
         "laravel/folio": "^1.1",
         "laravel/framework": "^12.0",
