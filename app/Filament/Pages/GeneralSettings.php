@@ -35,6 +35,14 @@ class GeneralSettings extends Page implements HasForms
         'linkedinUrl',
         'email',
         'cv',
+        'aboutTitle',
+        'aboutDescription',
+        'projectsTitle',
+        'projectsDescription',
+        'skillsTitle',
+        'skillsDescription',
+        'contactTitle',
+        'contactDescription'
     ];
 
     public function mount(): void
@@ -73,6 +81,42 @@ class GeneralSettings extends Page implements HasForms
                                     Components\FileUpload::make('cv'),
                                 ])
                         ]),
+                        Tabs\Tab::make('About')
+                            ->schema([
+                                Components\Grid::make(2)
+                                    ->schema([
+                                        Components\TextInput::make('aboutTitle'),
+                                        Components\RichEditor::make('aboutDescription')
+                                            ->columnSpanFull(),
+                                    ])
+                            ]),
+                        Tabs\Tab::make('Projects')
+                            ->schema([
+                                Components\Grid::make(2)
+                                    ->schema([
+                                        Components\TextInput::make('projectsTitle'),
+                                        Components\RichEditor::make('projectsDescription')
+                                            ->columnSpanFull(),
+                                    ])
+                            ]),
+                        Tabs\Tab::make('Skills')
+                            ->schema([
+                                Components\Grid::make(2)
+                                    ->schema([
+                                        Components\TextInput::make('skillsTitle'),
+                                        Components\RichEditor::make('skillsDescription')
+                                            ->columnSpanFull(),
+                                    ])
+                            ]),
+                        Tabs\Tab::make('Contact')
+                            ->schema([
+                                Components\Grid::make(2)
+                                    ->schema([
+                                        Components\TextInput::make('contactTitle'),
+                                        Components\RichEditor::make('contactDescription')
+                                            ->columnSpanFull(),
+                                    ])
+                            ]),
                 ])
         ])
         ->statePath('data');

@@ -36,6 +36,7 @@ class SkillResource extends Resource
                 Forms\Components\TextInput::make('name')
                     ->required()
                     ->maxLength(255),
+                Forms\Components\Textarea::make('description')->required()->columnSpanFull(),
             ]);
     }
 
@@ -45,6 +46,7 @@ class SkillResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('category.name')->searchable()->sortable(),
                 Tables\Columns\TextColumn::make('name')->searchable()->sortable(),
+                Tables\Columns\TextColumn::make('description')->searchable()->sortable(),
             ])
             ->filters([
                 //

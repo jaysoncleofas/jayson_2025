@@ -28,6 +28,7 @@ class ProjectResource extends Resource
                     ->columnSpanFull(),
                 Forms\Components\TextInput::make('title')->required(),
                 Forms\Components\Textarea::make('description')->required()->columnSpanFull(),
+                Forms\Components\TextInput::make('site')->required(),
                 Forms\Components\TextInput::make('site_url')->required(),
             ]);
     }
@@ -38,6 +39,7 @@ class ProjectResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('photo'),
                 Tables\Columns\TextColumn::make('title')->searchable()->sortable(),
+                Tables\Columns\TextColumn::make('site')->searchable()->sortable(),
                 Tables\Columns\TextColumn::make('site_url')->searchable()->sortable(),
             ])
             ->filters([

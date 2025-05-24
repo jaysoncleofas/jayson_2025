@@ -1,11 +1,11 @@
 @php
 
-  use App\Models\Project;
-  use App\Models\Work;
-  use Carbon\Carbon;
+use App\Models\Project;
+use App\Models\Work;
+use Carbon\Carbon;
 
-  $works = Work::orderBy('end_date', 'desc')->get();
-  $projects = Project::orderBy('title')->get();
+$works = Work::orderBy('end_date', 'desc')->get();
+$projects = Project::orderBy('title')->get();
 
 @endphp
 
@@ -49,24 +49,32 @@
         <div class="mx-auto grid max-w-xl grid-cols-1 gap-y-20 lg:max-w-none lg:grid-cols-2">
           <div class="flex flex-col gap-16">
             @forelse ($projects as $project)
-              <article class="group relative flex flex-col items-start">
-                <h2 class="text-base font-semibold tracking-tight text-zinc-800 dark:text-zinc-100">
-                  <div class="absolute -inset-x-4 -inset-y-6 z-0 scale-95 bg-zinc-50 opacity-0 transition group-hover:scale-100 group-hover:opacity-100 sm:-inset-x-6 sm:rounded-2xl dark:bg-zinc-800/50"></div>
-                  <a href="{{ $project->site_url }}" target="_blank"><span class="absolute -inset-x-4 -inset-y-6 z-20 sm:-inset-x-6 sm:rounded-2xl"></span><span class="relative z-10">{{ $project->title }}</span></a>
-                </h2>
-                <p class="relative z-10 mt-2 text-sm text-zinc-600 dark:text-zinc-400">{{ $project->description }}</p>
-                <div aria-hidden="true" class="relative z-10 mt-4 flex items-center text-sm font-medium text-teal-500">
-                  View Website
-                  <svg viewBox="0 0 16 16" fill="none" aria-hidden="true" class="ml-1 h-4 w-4 stroke-current">
-                    <path d="M6.75 5.75 9.25 8l-2.5 2.25" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-                  </svg>
-                </div>
-              </article>
+            <article class="group relative flex flex-col items-start">
+              <h2 class="text-base font-semibold tracking-tight text-zinc-800 dark:text-zinc-100">
+                <div class="absolute -inset-x-4 -inset-y-6 z-0 scale-95 bg-zinc-50 opacity-0 transition group-hover:scale-100 group-hover:opacity-100 sm:-inset-x-6 sm:rounded-2xl dark:bg-zinc-800/50"></div>
+                <a href="{{ $project->site_url }}" target="_blank"><span class="absolute -inset-x-4 -inset-y-6 z-20 sm:-inset-x-6 sm:rounded-2xl"></span><span class="relative z-10">{{ $project->title }}</span></a>
+              </h2>
+              <p class="relative z-10 mt-2 text-sm text-zinc-600 dark:text-zinc-400">{{ $project->description }}</p>
+              <div aria-hidden="true" class="relative z-10 mt-4 flex items-center text-sm font-medium text-teal-500">
+                View Website
+                <svg viewBox="0 0 16 16" fill="none" aria-hidden="true" class="ml-1 h-4 w-4 stroke-current">
+                  <path d="M6.75 5.75 9.25 8l-2.5 2.25" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+              </div>
+            </article>
             @empty
-             No Data Available
+            No Data Available
             @endforelse
           </div>
           <div class="space-y-10 lg:pl-16 xl:pl-24">
+            <form action="/thank-you" class="rounded-2xl border border-zinc-100 p-6 dark:border-zinc-700/40">
+              <h2 class="flex text-sm font-semibold text-zinc-900 dark:text-zinc-100"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="h-6 w-6 flex-none">
+                <path d="M2.75 7.75a3 3 0 0 1 3-3h12.5a3 3 0 0 1 3 3v8.5a3 3 0 0 1-3 3H5.75a3 3 0 0 1-3-3v-8.5Z" class="fill-zinc-100 stroke-zinc-400 dark:fill-zinc-100/10 dark:stroke-zinc-500"></path>
+                <path d="m4 6 6.024 5.479a2.915 2.915 0 0 0 3.952 0L20 6" class="stroke-zinc-400 dark:stroke-zinc-500"></path>
+              </svg><span class="ml-3">Message me</span></h2>
+              <p class="mt-2 text-sm text-zinc-600 dark:text-zinc-400">I’d love to hear from you. Hit the button below to drop me a message — I’ll get back to you as soon as I can.</p>
+              <div class="mt-6"><a href="/contact" class="inline-flex items-center gap-2 justify-center rounded-md py-2 px-3 text-sm outline-offset-2 transition active:transition-none bg-zinc-800 font-semibold text-zinc-100 hover:bg-zinc-700 active:bg-zinc-800 active:text-zinc-100/70 dark:bg-zinc-700 dark:hover:bg-zinc-600 dark:active:bg-zinc-700 dark:active:text-zinc-100/70 flex-none w-full" type="submit">Contact</a></div>
+            </form>
             <div class="rounded-2xl border border-zinc-100 p-6 dark:border-zinc-700/40">
               <h2 class="flex text-sm font-semibold text-zinc-900 dark:text-zinc-100">
                 <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="h-6 w-6 flex-none">
@@ -77,25 +85,25 @@
               </h2>
               <ol class="mt-6 space-y-4">
                 @forelse ($works as $work)
-                  <li class="flex gap-4">
-                    <div class="relative mt-1 flex h-10 w-10 flex-none items-center justify-center rounded-full shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0">
-                      <img alt="" loading="lazy" width="32" height="32" decoding="async" data-nimg="1" class="h-7 w-7" style="color:transparent" src="{{ '/storage/'.$work->photo }}">
-                    </div>
-                    <dl class="flex flex-auto flex-wrap gap-x-2">
-                      <dt class="sr-only">Company</dt>
-                      <dd class="w-full flex-none text-sm font-medium text-zinc-900 dark:text-zinc-100">{{ $work->company }}</dd>
-                      <dt class="sr-only">{{ $work->company }}</dt>
-                      <dd class="text-xs text-zinc-500 dark:text-zinc-400">{{ $work->title }}</dd>
-                      <dt class="sr-only">Date</dt>
-                      <dd class="ml-auto text-xs text-zinc-400 dark:text-zinc-500" aria-label="{{ $work->start_date }} until Present">
-                        <time datetime="{{ $work->start_date }}">{{ $work->start_date }}</time>
-                        <span aria-hidden="true">—</span>
-                        <time datetime="{{ $work->end_date }}">{{ $work->end_date }}</time>
-                      </dd>
-                    </dl>
-                  </li>
+                <li class="flex gap-4">
+                  <div class="relative mt-1 flex h-10 w-10 flex-none items-center justify-center rounded-full shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0">
+                    <img alt="" loading="lazy" width="32" height="32" decoding="async" data-nimg="1" class="h-7 w-7" style="color:transparent" src="{{ '/storage/'.$work->photo }}">
+                  </div>
+                  <dl class="flex flex-auto flex-wrap gap-x-2">
+                    <dt class="sr-only">Company</dt>
+                    <dd class="w-full flex-none text-sm font-medium text-zinc-900 dark:text-zinc-100">{{ $work->company }}</dd>
+                    <dt class="sr-only">{{ $work->company }}</dt>
+                    <dd class="text-xs text-zinc-500 dark:text-zinc-400">{{ $work->title }}</dd>
+                    <dt class="sr-only">Date</dt>
+                    <dd class="ml-auto text-xs text-zinc-400 dark:text-zinc-500" aria-label="{{ $work->start_date }} until Present">
+                      <time datetime="{{ $work->start_date }}">{{ $work->start_date }}</time>
+                      <span aria-hidden="true">—</span>
+                      <time datetime="{{ $work->end_date }}">{{ $work->end_date }}</time>
+                    </dd>
+                  </dl>
+                </li>
                 @empty
-                  No Data Available
+                No Data Available
                 @endforelse
               </ol>
               <a href="{{ '/storage/'.get_setting('cv') }}" download="" class="inline-flex items-center gap-2 justify-center rounded-md py-2 px-3 text-sm outline-offset-2 transition active:transition-none bg-zinc-50 font-medium text-zinc-900 hover:bg-zinc-100 active:bg-zinc-100 active:text-zinc-900/60 dark:bg-zinc-800/50 dark:text-zinc-300 dark:hover:bg-zinc-800 dark:hover:text-zinc-50 dark:active:bg-zinc-800/50 dark:active:text-zinc-50/70 group mt-6 w-full">
@@ -105,45 +113,6 @@
                 </svg>
               </a>
             </div>
-            
-            <form class="rounded-2xl border border-zinc-100 p-6 dark:border-zinc-700/40" action="/contact" method="POST" id="js-form">
-              @csrf
-              @honeypot
-
-              <h2 class="flex text-sm font-semibold text-zinc-900 dark:text-zinc-100">
-                <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="h-6 w-6 flex-none">
-                  <path d="M2.75 7.75a3 3 0 0 1 3-3h12.5a3 3 0 0 1 3 3v8.5a3 3 0 0 1-3 3H5.75a3 3 0 0 1-3-3v-8.5Z" class="fill-zinc-100 stroke-zinc-400 dark:fill-zinc-100/10 dark:stroke-zinc-500"></path>
-                  <path d="m4 6 6.024 5.479a2.915 2.915 0 0 0 3.952 0L20 6" class="stroke-zinc-400 dark:stroke-zinc-500"></path>
-                </svg>
-                <span class="ml-3">Contact</span>
-              </h2>
-              <p class="mt-2 text-sm text-zinc-600 dark:text-zinc-400">Looking for a skilled software engineer to bring your vision to life? Reach out below.</p>
-
-              <h3 id="success-text-message" class="hidden text-green-800 font-xl font-semibold mt-2">Message sent!</h3>
-              <h3 id="error-text-message" class="hidden text-red-800 font-xl font-semibold mt-2"></h3>
-
-              <div class="mt-6">
-                <div class="mb-4">
-                  <input type="text" name="name" placeholder="Name" aria-label="Name" class="min-w-0 w-full flex-auto appearance-none rounded-md border border-zinc-900/10 bg-white px-3 py-[calc(theme(spacing.2)-1px)] shadow-md shadow-zinc-800/5 placeholder:text-zinc-400 focus:border-teal-500 focus:outline-none focus:ring-4 focus:ring-teal-500/10 sm:text-sm dark:border-zinc-700 dark:bg-zinc-700/[0.15] dark:text-zinc-200 dark:placeholder:text-zinc-500 dark:focus:border-teal-400 dark:focus:ring-teal-400/10">
-                  <p id="error-name" class="error-text hidden text-sm text-red-300 mt-1 mb-0"></p>
-                </div>
-                
-                <div class="mb-4">
-                  <input type="email" name="email" placeholder="Email address" aria-label="Email address" class="min-w-0 w-full flex-auto appearance-none rounded-md border border-zinc-900/10 bg-white px-3 py-[calc(theme(spacing.2)-1px)] shadow-md shadow-zinc-800/5 placeholder:text-zinc-400 focus:border-teal-500 focus:outline-none focus:ring-4 focus:ring-teal-500/10 sm:text-sm dark:border-zinc-700 dark:bg-zinc-700/[0.15] dark:text-zinc-200 dark:placeholder:text-zinc-500 dark:focus:border-teal-400 dark:focus:ring-teal-400/10">
-                  <p id="error-email" class="error-text hidden text-sm text-red-300 mt-1 mb-0"></p>
-                </div>
-                
-                <div class="mb-4">
-                  <textarea placeholder="Message" name="message" cols="30" rows="10" aria-label="Email address" class="min-w-0 w-full flex-auto appearance-none rounded-md border border-zinc-900/10 bg-white px-3 py-[calc(theme(spacing.2)-1px)] shadow-md shadow-zinc-800/5 placeholder:text-zinc-400 focus:border-teal-500 focus:outline-none focus:ring-4 focus:ring-teal-500/10 sm:text-sm dark:border-zinc-700 dark:bg-zinc-700/[0.15] dark:text-zinc-200 dark:placeholder:text-zinc-500 dark:focus:border-teal-400 dark:focus:ring-teal-400/10"></textarea>
-                  <p id="error-message" class="error-text hidden text-sm text-red-300 mt-1 mb-0"></p>
-                </div>
-                
-                <div class="mb-4">
-                  <button id="submit-button" class="inline-flex items-center gap-2 justify-center rounded-md py-2 px-3 text-sm outline-offset-2 transition active:transition-none bg-zinc-800 font-semibold text-zinc-100 hover:bg-zinc-700 active:bg-zinc-800 active:text-zinc-100/70 dark:bg-zinc-700 dark:hover:bg-zinc-600 dark:active:bg-zinc-700 dark:active:text-zinc-100/70 flex-none" type="submit">Submit</button>
-                </div>
-                <div data-lastpass-icon-root="" style="position: relative !important; height: 0px !important; width: 0px !important; float: left !important;"></div>
-              </div>
-            </form>
           </div>
         </div>
       </div>

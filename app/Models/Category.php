@@ -11,7 +11,7 @@ class Category extends Model
         'name',
     ];
 
-    public function skils(): HasMany
+    public function skills(): HasMany
     {
         return $this->hasMany(Skill::class);
     }
