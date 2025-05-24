@@ -1,10 +1,7 @@
 @php
 
 use App\Models\Project;
-use App\Models\Work;
-use Carbon\Carbon;
 
-$works = Work::orderBy('end_date', 'desc')->get();
 $projects = Project::orderBy('title')->get();
 
 @endphp

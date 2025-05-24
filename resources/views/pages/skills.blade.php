@@ -1,7 +1,6 @@
 @php
 
 use App\Models\Category;
-use Carbon\Carbon;
 
 $categories = Category::with('skills')->orderBy('id')->get();
 
