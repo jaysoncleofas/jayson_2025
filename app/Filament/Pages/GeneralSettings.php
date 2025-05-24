@@ -86,7 +86,7 @@ class GeneralSettings extends Page implements HasForms
                                 Components\Grid::make(2)
                                     ->schema([
                                         Components\TextInput::make('aboutTitle'),
-                                        Components\RichEditor::make('aboutDescription')
+                                        Components\Textarea::make('aboutDescription')
                                             ->columnSpanFull(),
                                     ])
                             ]),
@@ -95,7 +95,7 @@ class GeneralSettings extends Page implements HasForms
                                 Components\Grid::make(2)
                                     ->schema([
                                         Components\TextInput::make('projectsTitle'),
-                                        Components\RichEditor::make('projectsDescription')
+                                        Components\Textarea::make('projectsDescription')
                                             ->columnSpanFull(),
                                     ])
                             ]),
@@ -104,7 +104,7 @@ class GeneralSettings extends Page implements HasForms
                                 Components\Grid::make(2)
                                     ->schema([
                                         Components\TextInput::make('skillsTitle'),
-                                        Components\RichEditor::make('skillsDescription')
+                                        Components\Textarea::make('skillsDescription')
                                             ->columnSpanFull(),
                                     ])
                             ]),
@@ -113,7 +113,7 @@ class GeneralSettings extends Page implements HasForms
                                 Components\Grid::make(2)
                                     ->schema([
                                         Components\TextInput::make('contactTitle'),
-                                        Components\RichEditor::make('contactDescription')
+                                        Components\Textarea::make('contactDescription')
                                             ->columnSpanFull(),
                                     ])
                             ]),
