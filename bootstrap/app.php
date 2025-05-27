@@ -1,6 +1,5 @@
 <?php
 
-use App\Console\Commands\GenerateSitemap;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
@@ -23,7 +22,7 @@ return Application::configure(basePath: dirname(__DIR__))
         ]);
     })
     ->withSchedule(function (Schedule $schedule) {
-        $schedule->call(new GenerateSitemap)->daily();
+        $schedule->command('sitemap:generate')->daily();
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //
