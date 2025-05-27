@@ -42,7 +42,8 @@ class GeneralSettings extends Page implements HasForms
         'skillsTitle',
         'skillsDescription',
         'contactTitle',
-        'contactDescription'
+        'contactDescription',
+        'googleAnalyticsId'
     ];
 
     public function mount(): void
@@ -79,6 +80,7 @@ class GeneralSettings extends Page implements HasForms
                                     Components\TextInput::make('githubUrl'),
                                     Components\TextInput::make('linkedinUrl'),
                                     Components\FileUpload::make('cv'),
+                                    Components\TextInput::make('googleAnalyticsId'),
                                 ])
                         ]),
                         Tabs\Tab::make('About')

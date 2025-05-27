@@ -4,19 +4,21 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@yield('title') {{ get_setting('siteTitle') }}</title>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-06SJGFQCVN"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
+    @if (! empty(get_setting('googleAnalyticsId')))
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id={{ get_setting('googleAnalyticsId') }}"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
 
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-        gtag('js', new Date());
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag('js', new Date());
 
-        gtag('config', 'G-06SJGFQCVN');
+            gtag('config', '{{ get_setting('googleAnalyticsId') }}');
 
-    </script>
+        </script>
+    @endif
     @vite('resources/css/app.css')
     @livewireStyles
 </head>
