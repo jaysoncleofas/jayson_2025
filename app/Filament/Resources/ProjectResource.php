@@ -27,7 +27,7 @@ class ProjectResource extends Resource
                     ->image()
                     ->columnSpanFull(),
                 Forms\Components\TextInput::make('title')->required(),
-                Forms\Components\Textarea::make('description')->required()->columnSpanFull(),
+                Forms\Components\RichEditor::make('description')->required()->columnSpanFull(),
                 Forms\Components\TextInput::make('site')->required(),
                 Forms\Components\TextInput::make('site_url')->required(),
             ]);
